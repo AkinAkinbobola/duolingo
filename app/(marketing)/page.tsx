@@ -35,41 +35,42 @@ const Home = () => {
         >
           Learn, practice, and master new languages with Duolingo.
         </h1>
+        <div className={"flex flex-col items-center gap-y-3 max-w-[330px] w-full"}>
+          <ClerkLoading>
+            <Loader className={"h-5 w-5 text-muted-foreground animate-spin"} />
+          </ClerkLoading>
 
-        <ClerkLoading>
-          <Loader className={"h-5 w-5 text-muted-foreground animate-spin"} />
-        </ClerkLoading>
+          <ClerkLoaded>
+            <SignedOut>
+              <SignUpButton mode={"modal"} forceRedirectUrl={"/learn"}>
+                <Button size={"lg"} variant={"secondary"} className={"w-full"}>
+                  Get Started
+                </Button>
+              </SignUpButton>
 
-        <ClerkLoaded>
-          <SignedOut>
-            <SignUpButton mode={"modal"} forceRedirectUrl={"/learn"}>
-              <Button size={"lg"} variant={"secondary"} className={"w-full"}>
-                Get Started
-              </Button>
-            </SignUpButton>
+              <SignInButton mode={"modal"} forceRedirectUrl={"/learn"}>
+                <Button
+                  size={"lg"}
+                  variant={"primaryOutline"}
+                  className={"w-full"}
+                >
+                  I already have an account
+                </Button>
+              </SignInButton>
+            </SignedOut>
 
-            <SignInButton mode={"modal"} forceRedirectUrl={"/learn"}>
+            <SignedIn>
               <Button
                 size={"lg"}
-                variant={"primaryOutline"}
+                variant={"secondary"}
                 className={"w-full"}
+                asChild
               >
-                I already have an account
+                <Link href={"/learn"}>Continue Learning</Link>
               </Button>
-            </SignInButton>
-          </SignedOut>
-
-          <SignedIn>
-            <Button
-              size={"lg"}
-              variant={"secondary"}
-              className={"w-full"}
-              asChild
-            >
-              <Link href={"/learn"}>Continue Learning</Link>
-            </Button>
-          </SignedIn>
-        </ClerkLoaded>
+            </SignedIn>
+          </ClerkLoaded>
+        </div>
       </div>
     </main>
   );

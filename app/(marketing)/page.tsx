@@ -5,7 +5,6 @@ import {
   SignedIn,
   SignedOut,
   SignInButton,
-  SignUp,
   SignUpButton,
 } from "@clerk/nextjs";
 import { Loader } from "lucide-react";

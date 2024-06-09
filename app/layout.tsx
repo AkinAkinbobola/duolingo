@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Duolingo",
     description: "Learn new languages today!",
     icons: {
-        icon: "/favicon.png"
+        icon: "/favicon.svg"
     }
 };
 

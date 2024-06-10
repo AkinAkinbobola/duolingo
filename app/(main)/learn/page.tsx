@@ -1,6 +1,7 @@
 import StickyWrapper from "@/components/StickyWrapper";
 import FeedWrapper from "@/components/FeedWrapper";
 import Header from "@/app/(main)/learn/Header";
+import UserProgress from "@/components/UserProgress";
 
 const LearnPage = () => {
     return (
@@ -8,7 +9,17 @@ const LearnPage = () => {
         <FeedWrapper>
           <Header title={"Japanese"} />
         </FeedWrapper>
-        <StickyWrapper>My sticker wrapper</StickyWrapper>
+        <StickyWrapper>
+          <UserProgress
+            activeCourse={{
+                title: "Japanese",
+                imageSrc: "/flags/jp.svg"
+            }}
+            hearts={2}
+            points={100}
+            hasActiveSubscription={false}
+          />
+        </StickyWrapper>
       </div>
     );
 };

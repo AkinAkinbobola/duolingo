@@ -1,22 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import {flags} from "@/constants";
 
-const flags = [
-  {
-    path: "/flags/fr.svg",
-    name: "French"
-  },
-  {
-    path: "/flags/cn.svg",
-    name: "Chinese"
-  },{
-    path: "/flags/jp.svg",
-    name: "Japanese"
-  },{
-    path: "/flags/kr.svg",
-    name: "South Korean"
-  },
-]
 const Footer = () => {
   return (
     <footer

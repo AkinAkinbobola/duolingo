@@ -23,7 +23,7 @@ const Home = () => {
           "relative w-[240px] h-[240px] lg:w-[424px] lg:h-[424px] mb-8 lg:mb-0"
         }
       >
-        <Image src={"/favicon.svg"} alt={"Hero"} fill />
+        <Image src={"/icons/favicon.svg"} alt={"Hero"} fill />
       </div>
 
       <div className={"flex flex-col items-center gap-y-8"}>

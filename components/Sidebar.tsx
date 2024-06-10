@@ -3,8 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import SidebarItem from "@/components/SidebarItem";
 import { sidebarItems } from "@/constants";
-import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
+import { ClerkLoaded, ClerkLoading, SignOutButton } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   className?: string;
@@ -14,7 +15,7 @@ const Sidebar = ({ className }: Props) => {
   return (
     <div
       className={cn(
-        "h-full lg:w-[256px] lg:fixed left-0 top-0 px-4 flex flex-col border-r-2",
+        "h-full lg:w-[256px] lg:fixed left-0 top-0 px-4 flex flex-col lg:border-r-2",
         className,
       )}
     >
@@ -49,7 +50,15 @@ const Sidebar = ({ className }: Props) => {
         </ClerkLoading>
 
         <ClerkLoaded>
-          <UserButton afterSignOutUrl={"/"} />
+          <SignOutButton redirectUrl={"/"}>
+            <Button
+              size={"lg"}
+              variant={"danger"}
+              className={"justify-start h-[52px] w-full"}
+            >
+              Sign out
+            </Button>
+          </SignOutButton>
         </ClerkLoaded>
       </div>
     </div>

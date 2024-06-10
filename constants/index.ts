@@ -36,6 +36,6 @@ export const flags = [
   },
   {
     path: "/flags/kr.svg",
-    name: "South Korean",
+    name: "Korean",
   },
 ];

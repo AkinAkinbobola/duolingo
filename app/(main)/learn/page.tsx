@@ -15,7 +15,7 @@ const LearnPage = () => {
                 title: "Japanese",
                 imageSrc: "/flags/jp.svg"
             }}
-            hearts={2}
+            hearts={5}
             points={100}
             hasActiveSubscription={false}
           />

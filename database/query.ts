@@ -2,7 +2,7 @@ import { cache } from "react";
 import db from "@/database/drizzle";
 import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
-import { userProgress } from "@/database/schema";
+import {courses, userProgress} from "@/database/schema";
 
 export const getCourses = cache(async () => {
   return db.query.courses.findMany();
@@ -19,4 +19,10 @@ export const getUserProgress = cache(async () => {
       activeCourse: true,
     },
   });
+});
+
+export const getCourseById = cache(async (courseId: number) => {
+  return db.query.courses.findFirst({
+    where: eq(courses.id, courseId),
+  })
 });

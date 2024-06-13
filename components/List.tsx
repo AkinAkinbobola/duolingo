@@ -1,7 +1,10 @@
 "use client";
 
-import {courses, userProgress} from "@/database/schema";
+import { courses, userProgress } from "@/database/schema";
 import Card from "@/components/Card";
+import { useRouter } from "next/navigation";
+import { useTransition } from "react";
+import {upsertUserProgress} from "@/actions/userProgress";
 
 type Props = {
   courses: (typeof courses.$inferInsert)[];
@@ -9,6 +12,21 @@ type Props = {
 };
 
 const List = ({ courses, activeCourseId }: Props) => {
+  const router = useRouter();
+  const [pending, startTransition] = useTransition();
+
+  const onClick = (id: number) => {
+    if (pending) return;
+
+    if (id === activeCourseId) {
+      router.push("/learn");
+    }
+
+    startTransition(() => {
+      upsertUserProgress(id);
+    })
+  };
+
   return (
     <div
       className={
@@ -21,8 +39,8 @@ const List = ({ courses, activeCourseId }: Props) => {
           id={course.id!}
           title={course.title}
           imageSrc={course.imageSrc}
-          onClick={() => {}}
-          disabled={false}
+          onClick={onClick}
+          disabled={pending}
           active={activeCourseId === course.id}
         />
       ))}

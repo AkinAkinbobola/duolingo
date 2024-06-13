@@ -4,7 +4,8 @@ import { courses, userProgress } from "@/database/schema";
 import Card from "@/components/Card";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
-import {upsertUserProgress} from "@/actions/userProgress";
+import { upsertUserProgress } from "@/actions/userProgress";
+import { toast } from "sonner";
 
 type Props = {
   courses: (typeof courses.$inferInsert)[];
@@ -23,8 +24,8 @@ const List = ({ courses, activeCourseId }: Props) => {
     }
 
     startTransition(() => {
-      upsertUserProgress(id);
-    })
+      upsertUserProgress(id).catch(() => toast.error("Something went wrong"));
+    });
   };
 
   return (
